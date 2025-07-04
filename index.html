@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vikram Singh - Cricket Trading Expert</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: url('https://static.vecteezy.com/system/resources/thumbnails/000/427/069/small/Cricket-Stadium2.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: white;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            padding: 20px;
+        }
+        
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.75);
+            z-index: -1;
+        }
+        
+        .logo {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #FFD700;
+            margin-bottom: 20px;
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+        }
+        
+        .container {
+            text-align: center;
+            max-width: 600px;
+            width: 100%;
+            padding: 30px;
+            background-color: rgba(0, 0, 0, 0.7);
+            border-radius: 15px;
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.8);
+            border: 1px solid #FFD700;
+        }
+        
+        h1 {
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+            color: #FFD700;
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+        }
+        
+        h2 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: #fff;
+        }
+        
+        .subscriber-count {
+            font-size: 1.1rem;
+            margin-bottom: 25px;
+            color: #FFD700;
+            font-weight: bold;
+        }
+        
+        .badges {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+        
+        .badge {
+            background-color: rgba(255, 215, 0, 0.2);
+            border: 1px solid #FFD700;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .timer-container {
+            margin: 25px 0;
+            padding: 15px;
+            background-color: rgba(0, 0, 0, 0.5);
+            border-radius: 10px;
+            border: 1px solid #FFD700;
+        }
+        
+        .timer {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #FFD700;
+            margin-bottom: 10px;
+            font-family: 'Digital', monospace;
+        }
+        
+        .timer-label {
+            font-size: 1rem;
+            color: #fff;
+        }
+        
+        .buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            padding: 12px 30px;
+            border: none;
+            border-radius: 30px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            opacity: 0;
+            transform: translateY(20px);
+            text-decoration: none;
+            min-width: 180px;
+            text-align: center;
+        }
+        
+        .btn-primary {
+            background-color: #FFD700;
+            color: #000;
+            box-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
+        }
+        
+        .btn-primary:hover {
+            background-color: #ffc800;
+            transform: scale(1.05);
+        }
+        
+        .btn-secondary {
+            background-color: transparent;
+            color: #FFD700;
+            border: 2px solid #FFD700;
+        }
+        
+        .btn-secondary:hover {
+            background-color: rgba(255, 215, 0, 0.1);
+            transform: scale(1.05);
+        }
+        
+        .disclaimer {
+            margin-top: 30px;
+            font-size: 0.75rem;
+            color: #aaa;
+            line-height: 1.5;
+            padding: 15px;
+            background-color: rgba(0, 0, 0, 0.3);
+            border-radius: 8px;
+        }
+        
+        .channel-link {
+            margin-top: 15px;
+            font-size: 0.85rem;
+            color: #FFD700;
+            word-break: break-all;
+        }
+        
+        .channel-owner {
+            margin-top: 10px;
+            font-size: 0.8rem;
+            color: #ccc;
+        }
+        
+        @media (max-width: 576px) {
+            .container {
+                padding: 20px 15px;
+            }
+            
+            h1 {
+                font-size: 1.8rem;
+            }
+            
+            h2 {
+                font-size: 1.3rem;
+            }
+            
+            .logo {
+                width: 100px;
+                height: 100px;
+            }
+            
+            .timer {
+                font-size: 2rem;
+            }
+            
+            .btn {
+                padding: 10px 20px;
+                font-size: 0.9rem;
+                min-width: 160px;
+            }
+        }
+        
+        /* Animation for buttons */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .fade-in {
+            animation: fadeInUp 0.8s forwards;
+        }
+        
+        /* Pulse animation for timer */
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="logo.jpg" alt="Vikram Singh" class="logo">
+        <h1>Vikram Singh</h1>
+        <h2>Cricket Trading Expert</h2>
+        <div class="subscriber-count">94,049 Subscribers</div>
+        
+        <div class="badges">
+            <span class="badge">✈️ Cricket Trading Expert</span>
+            <span class="badge">🗽 Jackpot King</span>
+            <span class="badge">💸 Matches Profit</span>
+        </div>
+        
+        <div class="timer-container">
+            <div class="timer pulse" id="timer">01:00</div>
+            <div class="timer-label">Limited Time Offer!</div>
+        </div>
+        
+        <div class="buttons">
+            <a href="https://t.me/+kwxKPuPeyl1kODI1" class="btn btn-primary">Join [Vikram Singh] Channel</a>
+        </div>
+        
+        <div class="channel-link">
+            Channel link: https://t.me/+kwxKPuPeyl1kODI1
+        </div>
+        
+        <div class="channel-owner">
+            Channel Own: @Vikaramsing7
+        </div>
+        
+        <div class="disclaimer">
+            Disclaimer :- This Channel is for entertainment purpose Not for any illegal activities. All prediction based on my Analysis
+        </div>
+    </div>
+
+    <script>
+        // Timer functionality
+        function startTimer(duration, display) {
+            let timer = duration, minutes, seconds;
+            const interval = setInterval(function () {
+                minutes = parseInt(timer / 60, 10);
+                seconds = parseInt(timer % 60, 10);
+
+                minutes = minutes < 10 ? "0" + minutes : minutes;
+                seconds = seconds < 10 ? "0" + seconds : seconds;
+
+                display.textContent = minutes + ":" + seconds;
+
+                if (--timer < 0) {
+                    clearInterval(interval);
+                    display.textContent = "00:00";
+                    display.classList.remove('pulse');
+                    // You can add what happens when timer ends
+                }
+            }, 1000);
+        }
+
+        // Button animation
+        function animateButtons() {
+            const buttons = document.querySelectorAll('.btn');
+            buttons.forEach((btn, index) => {
+                setTimeout(() => {
+                    btn.classList.add('fade-in');
+                }, 300 + (index * 200)); // Staggered animation
+            });
+        }
+
+        window.onload = function () {
+            const sixtySeconds = 60,
+                display = document.querySelector('#timer');
+            startTimer(sixtySeconds, display);
+            animateButtons();
+            
+            // Add digital font for timer
+            const style = document.createElement('style');
+            style.innerHTML = `@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');`;
+            document.head.appendChild(style);
+            
+            // Apply digital font to timer
+            display.style.fontFamily = "'Share Tech Mono', monospace";
+        };
+    </script>
+</body>
+</html>
